@@ -14,6 +14,7 @@ import {
   Picker,
   Content
 } from "native-base";
+import Cart from "../CoffeeList/Cart";
 
 // Style
 import styles from "./styles";
@@ -40,8 +41,11 @@ class CoffeeDetail extends Component {
   };
 
   render() {
+    const cafeID = this.props.navigation.getParam("cafeID").id;
+    const cafe = cafes.find(displayedCafe => cafeID === displayedCafe.id);
+
     if (!cafes) return <Content />;
-    const cafe = cafes[0];
+    // cafe = cafes[0];
     return (
       <Content>
         <List>
@@ -94,4 +98,13 @@ class CoffeeDetail extends Component {
   }
 }
 
-export default observer(CoffeeDetail);
+export default CoffeeDetail;
+
+CoffeeDetail.navigationOptions = ({ navigation }) => {
+  const cafeID = navigation.getParam("cafeID").id;
+  const cafe = cafes.find(displayedCafe => cafeID === displayedCafe.id);
+  return {
+    title: cafe.name,
+    headerRight: <Cart />
+  };
+};

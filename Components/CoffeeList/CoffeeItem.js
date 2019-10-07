@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import { ImageBackground, View } from "react-native";
 
+import { withNavigation } from "react-navigation";
+
 // NativeBase Components
 import { ListItem, Card, CardItem, Thumbnail, Text, Left } from "native-base";
 
 // Style
 import styles from "./styles";
 
-const CoffeeItem = ({ cafe }) => {
+const CoffeeItem = props => {
+  const { navigation } = props;
+  const { cafe } = props;
   const handlePress = () => {
-    alert("Pressed");
+    props.navigation.navigate("DetailScreen", {
+      cafeID: cafe
+    });
   };
   return (
     <ImageBackground
-      source={{ uri: cafe.background }}
+      source={{ uri: props.cafe.background }}
       style={styles.background}
     >
       <View style={styles.overlay} />
@@ -23,12 +29,12 @@ const CoffeeItem = ({ cafe }) => {
             <Left>
               <Thumbnail
                 bordered
-                source={{ uri: cafe.img }}
+                source={{ uri: props.cafe.img }}
                 style={styles.thumbnail}
               />
-              <Text style={styles.text}>{cafe.name}</Text>
+              <Text style={styles.text}>{props.cafe.name}</Text>
               <Text note style={styles.text}>
-                {cafe.distance}
+                {props.cafe.distance}
               </Text>
             </Left>
           </CardItem>
@@ -38,4 +44,4 @@ const CoffeeItem = ({ cafe }) => {
   );
 };
 
-export default CoffeeItem;
+export default withNavigation(CoffeeItem);
