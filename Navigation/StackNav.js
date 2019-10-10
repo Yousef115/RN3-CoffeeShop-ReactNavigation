@@ -1,10 +1,11 @@
+import React, { Component } from "react";
 import { createStackNavigator } from "react-navigation-stack";
 
 //Components import
 import Login from "../Components/Login";
 import CoffeeList from "../Components/CoffeeList";
-import CoffeeCart from "../Components/CoffeeCart";
 import CoffeeDetail from "../Components/CoffeeDetail";
+import CoffeeCart from "../Components/CoffeeCart";
 
 const StackNav = createStackNavigator(
   {
@@ -20,10 +21,6 @@ const StackNav = createStackNavigator(
       headerStyle: {
         backgroundColor: "rgb(20,90,100)",
         fontWeight: "bold"
-      },
-      headerTitleStyle: {},
-      cardStyle: {
-        backgroundColor: "rgb(20,90,100)"
       }
     }
   }

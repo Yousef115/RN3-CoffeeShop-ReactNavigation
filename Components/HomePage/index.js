@@ -7,6 +7,7 @@ import { Container, Header } from "native-base";
 // Style
 import styles from "./styles";
 
+import AppContainer from "../../Navigation";
 // Components
 import CoffeeList from "../CoffeeList";
 import CoffeeCart from "../CoffeeCart";
@@ -18,7 +19,7 @@ const HomePage = () => {
     <Container style={styles.transparent}>
       <View style={styles.overlay} />
       <Header style={styles.transparent} />
-      <CoffeeDetail />
+      <AppContainer />
     </Container>
   );
 };

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { observer } from "mobx-react";
 
 // NativeBase Components
 import {
@@ -42,10 +41,9 @@ class CoffeeDetail extends Component {
 
   render() {
     const cafeID = this.props.navigation.getParam("cafeID").id;
-    const cafe = cafes.find(displayedCafe => cafeID === displayedCafe.id);
+    const cafe = cafes.find(displayCafe => cafeID === displayCafe.id);
 
     if (!cafes) return <Content />;
-    // cafe = cafes[0];
     return (
       <Content>
         <List>
@@ -102,7 +100,7 @@ export default CoffeeDetail;
 
 CoffeeDetail.navigationOptions = ({ navigation }) => {
   const cafeID = navigation.getParam("cafeID").id;
-  const cafe = cafes.find(displayedCafe => cafeID === displayedCafe.id);
+  const cafe = cafes.find(displayCafe => cafeID === displayCafe.id);
   return {
     title: cafe.name,
     headerRight: <Cart />
